@@ -1,9 +1,16 @@
 {
 	"name": "burnbright/silverstripe-deployer",
-	"description": "A reusable deployer setup for SilverStripe websites",
+	"description": "Opinionated recipe for deploying SilverStripe projects via Deployer",
 	"require": {
 		"deployer/deployer": "^5",
 		"deployer/recipes": "*"
 	},
-	"bin": ["bin/ssdep"]
+	"autoload": {
+		"psr-4": {
+				"Deployer\\": "src/"
+		},
+		"files": [
+				"autoload.php"
+		]
+	}
 }

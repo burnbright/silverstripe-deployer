@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-DEPLOYPHP=vendor/burnbright/silverstripe-deployer/deploy.php
-vendor/bin/dep --file=$DEPLOYPHP -v "$@"

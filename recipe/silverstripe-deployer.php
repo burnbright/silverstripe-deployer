@@ -2,19 +2,17 @@
 
 namespace Deployer;
 
-define('PROJECT_ROOT', realpath(__DIR__.'/../..'));
+define('PROJECT_ROOT', realpath(__DIR__.'/../../..'));
 
+// required recipes
 require 'recipe/composer.php';
 require 'recipe/rsync.php';
-require 'src/yamlconfig.php';
-
-$config = Config::loadFromYaml(PROJECT_ROOT.'/deploy.yml');
 
 // config
-set('repository', $config->get('repository', null, Config::REQUIRED));
+set('repository', 'UNDEFINED');
 set('ssh_type', 'native');
 set('ssh_multiplexing', true);
-set('keep_releases',  $config->get('keep_releases', 5));
+set('keep_releases', 5);
 set('default_stage', 'staging');
 set('deploy_path', '~/deploy_{{stage}}');
 set('rsync_dest','{{release_path}}');
@@ -43,3 +41,5 @@ task('release', [
 	'deploy:symlink',
 	'deploy:unlock'
 ]);
+
+after('deploy:failed', 'deploy:unlock');
