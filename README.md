@@ -6,7 +6,7 @@ Goals:
 
 * Simple to install.
 * Configure using yaml and ENV variables.
-* Build local and transfer output onto server.
+* Build locally and transfer output onto server.
 * Deploy from CI/CD or local environment.
 * Share tasks across projects, but not config.
 * Keep secrets secret. Assumes key-based SSH authentication is set up for each host.
@@ -35,9 +35,9 @@ Then you only need to type `dep` from the root of your project.
 
 (Assumes you've added ./vendor/bin to your PATH, otherwise use `vendor/bin/dep`)
 
-`dep` - will list available commands.
-`dep deploy` - defaults to deploying the 'staging' stage.
-`dep deploy production` - production deploy.
+ * `dep` - will list available commands.
+ * `dep deploy` - defaults to deploying to 'staging'.
+ * `dep deploy production` - deploy to 'production'.
 
 ## TODO
 
