@@ -1,0 +1,9 @@
+{
+	"name": "burnbright/silverstripe-deployer",
+	"description": "A reusable deployer setup for SilverStripe websites",
+	"require": {
+		"deployer/deployer": "^5",
+		"deployer/recipes": "*"
+	},
+	"bin": ["bin/ssdep"]
+}
