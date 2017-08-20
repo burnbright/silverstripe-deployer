@@ -10,6 +10,9 @@ require 'recipe/rsync.php';
 
 // config
 set('repository', 'UNDEFINED');
+
+set('default_stage', 'staging');
+
 // prod = 5 releases, stage = 1 release
 set('keep_releases', function () {
 	$stagenames = array('test', 'stage', 'staging');
@@ -18,11 +21,10 @@ set('keep_releases', function () {
 
 set('ssh_type', 'native');
 set('ssh_multiplexing', true);
-set('default_stage', 'staging');
-set('deploy_path', '~/deploy_{{stage}}');
-set('rsync_dest','{{release_path}}');
 
-inventory(PROJECT_ROOT.'/hosts.yml');
+set('deploy_base', '~/deploy');
+set('deploy_path', '{{deploy_base}}/{{hostname}}/');
+set('rsync_dest','{{release_path}}');
 
 // tasks
 require 'tasks/localbuild.php';

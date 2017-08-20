@@ -2,6 +2,8 @@
 
 Opinionated recipe for deploying SilverStripe projects via Deployer.
 
+https://deployer.org
+
 Goals:
 
 * Simple to install.
@@ -9,8 +11,17 @@ Goals:
 * Build locally and transfer output onto server.
 * Deploy from CI/CD or local environment.
 * Share tasks across projects, but not config.
-* Keep secrets secret. Assumes key-based SSH authentication is set up for each host.
+* Keep secrets secret.
 * Extensible. You can customise deploy.php.
+* Multiple projects/domains/stages per host.
+
+## Opinions
+
+ * Defaults to 'staging' for deploys etc
+ * Assumes key-based SSH authentication is configured for each host.
+ * Deploys into `~/deploy/{hostname}`. e.g.
+  * `~/deploy/example.com`
+	* `~/deploy/test.example.com`
 
 ## Installation and setup
 
@@ -22,6 +33,8 @@ Copy the deploy.php template to your project root:
 `cp vendor/burnbright/silverstripe-deployer/templates/deploy.php deploy.php`
 
 Modify your `deploy.php` file to suit your project.
+
+Add `.silverstripe-deployer` to your gitignore.
 
 ### Simplify vendor commands
 
@@ -38,16 +51,11 @@ Then you only need to type `dep` from the root of your project.
  * `dep` - will list available commands.
  * `dep deploy` - defaults to deploying to 'staging'.
  * `dep deploy production` - deploy to 'production'.
+ * `dep ssh` - ssh into a host.
 
-## TODO
+## Influences
 
-Introduce init template once Deployer project allows it:
-https://github.com/deployphp/deployer/issues/1340
-This will make the copy step during install a bit easier.
-
-## Sources
-
-* https://deployer.org
 * https://www.silverstripe.org/blog/making-deployment-a-piece-of-cake-with-deployer
 * https://gist.github.com/bummzack/b9e4a3ef0d16ab303aab66a779f92c6e
 * https://gist.github.com/lerni/26bd8ce1861ed563fb5731236f6baf46
+* https://github.com/dnadesign/shipistrano
