@@ -2,9 +2,11 @@
 
 namespace Deployer;
 
-set('shared_dirs', [
+add('shared_dirs', [
 	'assets'
 ]);
+
+set('bin/php', 'php');
 
 task('silverstripe:build', function () {
 	return run('{{bin/php}} {{release_path}}/framework/cli-script.php /dev/build');
