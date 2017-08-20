@@ -4,7 +4,7 @@ Opinionated recipe for deploying SilverStripe projects via Deployer.
 
 https://deployer.org
 
-Goals:
+## Goals
 
 * Simple to install.
 * Configure using yaml and ENV variables.
