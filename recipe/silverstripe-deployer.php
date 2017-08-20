@@ -29,6 +29,7 @@ set('rsync_dest','{{release_path}}');
 // tasks
 require 'tasks/localbuild.php';
 require 'tasks/silverstripe.php';
+require 'tasks/silverstripe.env.php';
 
 task('deploy', [
 	'localbuild',
