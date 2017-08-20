@@ -24,11 +24,11 @@ set('repository', '${repository}');
 
 // Hosts
 host('example.com')
-//  ->set('user', 'SSHUSERNAME')
+    ->user('SSHUSERNAME')
     ->stage('production');
 
 host('staging.example.com')
-//  ->set('user', 'SSHUSERNAME')
+    ->user('SSHUSERNAME')
     ->stage('staging');
 
 ${stats}

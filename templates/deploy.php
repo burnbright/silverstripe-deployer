@@ -8,8 +8,9 @@ set('repository', 'GIREPOSITORY');
 
 // Hosts
 host('example.com')
-    ->set('user', 'SSHUSERNAME')
+    ->user('SSHUSERNAME')
     ->stage('production');
 
 host('staging.example.com')
+    ->user('SSHUSERNAME')
     ->stage('staging');

@@ -2,6 +2,11 @@
 
 namespace Deployer;
 
+/**
+ * Local build strategy
+ * @see https://deployer.org/docs/advanced/deploy-strategies#build-server
+ */
+
 set('local_build_path', PROJECT_ROOT.'/.silverstripe-deployer');
 
 desc('Perform a deploy locally for upload to server.');
