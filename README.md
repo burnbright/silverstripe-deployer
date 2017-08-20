@@ -20,7 +20,7 @@ Goals:
  * Defaults to 'staging' for deploys etc
  * Assumes key-based SSH authentication is configured for each host.
  * Deploys into `~/deploy/{hostname}`. e.g.
-  * `~/deploy/example.com`
+	* `~/deploy/example.com`
 	* `~/deploy/test.example.com`
 
 ## Installation and setup
