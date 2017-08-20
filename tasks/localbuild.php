@@ -2,15 +2,11 @@
 
 namespace Deployer;
 
-define('LOCAL_BUILD_PATH', PROJECT_ROOT.'/.silverstripe-deployer');
-
-function buildPath() {
-	return LOCAL_BUILD_PATH;
-}
+set('local_build_path', PROJECT_ROOT.'/.silverstripe-deployer');
 
 desc('Perform a deploy locally for upload to server.');
 task('localbuild', function () {
-	set('deploy_path', buildPath());
+	set('deploy_path', '{{local_build_path}}');
 	set('keep_releases', 1);
 	invoke('deploy:writable');
 	invoke('deploy:prepare');
@@ -23,5 +19,5 @@ task('localbuild', function () {
 })->local();
 
 task('localbuild:upload', function () {
-	upload(buildPath() . '/current/', '{{release_path}}');
+	upload('{{local_build_path}}/current/', '{{release_path}}');
 });
