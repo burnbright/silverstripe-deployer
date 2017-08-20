@@ -10,9 +10,14 @@ require 'recipe/rsync.php';
 
 // config
 set('repository', 'UNDEFINED');
+// prod = 5 releases, stage = 1 release
+set('keep_releases', function () {
+	$stagenames = array('test', 'stage', 'staging');
+	return (in_array(get('stage'), $stagenames)) ? 1 : 5;
+});
+
 set('ssh_type', 'native');
 set('ssh_multiplexing', true);
-set('keep_releases', 5);
 set('default_stage', 'staging');
 set('deploy_path', '~/deploy_{{stage}}');
 set('rsync_dest','{{release_path}}');
