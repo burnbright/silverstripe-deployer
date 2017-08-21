@@ -2,8 +2,6 @@
 
 namespace Deployer;
 
-define('PROJECT_ROOT', realpath(__DIR__.'/../../..'));
-
 // required recipes
 require 'recipe/composer.php';
 
@@ -26,6 +24,7 @@ set('deploy_path', '{{deploy_base}}/{{hostname}}/');
 set('rsync_dest','{{release_path}}');
 
 // tasks
+require 'tasks/project.php';
 require 'tasks/localbuild.php';
 require 'tasks/silverstripe.php';
 require 'tasks/silverstripe.env.php';

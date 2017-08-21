@@ -3,11 +3,11 @@
 namespace Deployer;
 
 /**
- * Local build strategy
+ * Builds to a local folder
  * @see https://deployer.org/docs/advanced/deploy-strategies#build-server
  */
 
-set('local_build_path', PROJECT_ROOT.'/.silverstripe-deployer');
+set('local_build_path', '{{project_path}}/.silverstripe-deployer');
 
 desc('Perform a deploy locally for upload to server.');
 task('localbuild', function () {
@@ -18,9 +18,8 @@ task('localbuild', function () {
 	invoke('deploy:release');
 	invoke('deploy:update_code');
 	invoke('deploy:vendors');
-	// Add more build steps here
 	invoke('deploy:symlink');
-	invoke('cleanup'); // remove extra releases
+	invoke('cleanup');
 })->local();
 
 task('localbuild:upload', function () {
