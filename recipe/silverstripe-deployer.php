@@ -29,18 +29,22 @@ require 'tasks/localbuild.php';
 require 'tasks/silverstripe.php';
 require 'tasks/silverstripe.env.php';
 
+$isci = !empty(getenv('CI'));
+
+// perform build, release, clean steps
 task('deploy', [
-	'localbuild',
+	$isci ? 'project:build' : 'localbuild',
 	'release',
 	'cleanup',
 	'success'
 ]);
 
+// perform release
 task('release', [
 	'deploy:prepare',
 	'deploy:lock',
 	'deploy:release',
-	'localbuild:upload',
+	$isci ? 'project:upload' : 'localbuild:upload',
 	'deploy:shared',
 	'deploy:writable',
 	'silverstripe:buildflush',
