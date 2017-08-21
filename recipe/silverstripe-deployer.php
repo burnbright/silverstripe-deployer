@@ -6,7 +6,6 @@ define('PROJECT_ROOT', realpath(__DIR__.'/../../..'));
 
 // required recipes
 require 'recipe/composer.php';
-require 'recipe/rsync.php';
 
 // config
 set('repository', 'UNDEFINED');
