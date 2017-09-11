@@ -6,7 +6,7 @@ namespace Deployer;
  * Tasks for project in local working directory.
  */
 
-set('project_path', realpath(__DIR__.'/../../..'));
+set('project_path', realpath(__DIR__.'/../../../..'));
 
 desc('Upload files from gitlab project to remote release path');
 task('project:build', function () {
