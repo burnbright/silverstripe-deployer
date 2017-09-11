@@ -23,5 +23,11 @@ task('localbuild', function () {
 })->local();
 
 task('localbuild:upload', function () {
-	upload('{{local_build_path}}/current/', '{{release_path}}');
+	upload('{{local_build_path}}/current/', '{{release_path}}', array(
+		'options' => array(
+			'--exclude=\'.git/\'',
+			'--exclude=\'assets/\'',
+			'--exclude=\'silverstripe-cache/\''
+		)
+	));
 });
